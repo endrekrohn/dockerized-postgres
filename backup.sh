@@ -1,0 +1,1 @@
+(cd backups && docker-compose exec -t db pg_dumpall -c -U postgres | gzip > ./backup_$(date +"%Y-%m-%d_%H_%M_%S").gz)
