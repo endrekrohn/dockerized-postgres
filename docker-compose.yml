@@ -9,8 +9,17 @@ services:
       - POSTGRES_USER=${POSTGRES_USER-postgres}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD-postgres}
       - POSTGRES_DB=${POSTGRES_DB-db}
-    restart: always
+    restart: on-failure
     ports:
       - "5432:5432"
+
+  db-admin:
+    image: dbeaver/cloudbeaver:latest
+    restart: always
+    ports:
+     - "8080:8978"
+    profiles:
+     - debug
+
 volumes:
   db-data:
